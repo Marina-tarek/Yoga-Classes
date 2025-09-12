@@ -12,6 +12,10 @@ import NotFound from './Components/NotFound';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
 import { store } from './reducx/store';
+import Register from './Components/register';
+
+
+
 
 
 function App() {
@@ -28,6 +32,7 @@ function App() {
         <Route path='/class/:id' element={<ClassDesc/>}></Route>
         <Route path='/classes' element={<Classes/>}></Route>
         <Route path='/favourite' element={<Favourite/>} ></Route>
+        <Route path='/register' element={<Register/>}></Route>
         <Route path='/*' element={<NotFound/>}></Route>
       </Routes>
 <Footer/>

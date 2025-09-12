@@ -34,8 +34,8 @@ function Navbar() {
                   isActive ? "bg-purple-600 text-white px-2 py-1.5 rounded-lg" : "" }><li >Classes</li></NavLink>
             <NavLink to={"/contact"} className={({ isActive }) =>
                   isActive ? "bg-purple-600 text-white px-2 py-1.5 rounded-lg" : "" }><li >Contact</li></NavLink>
-            <NavLink to={"/Favourite"} className="relative"><i><FaHeart className='text-2xl'/> <span className='absolute bg-purple-600 text-white px-0.5 right-0 top-[-80%] text-xl'>{count}</span></i></NavLink>
-            <NavLink><li >Login</li></NavLink>
+            <NavLink to={"/Favourite"} className="relative"><i><FaHeart className='text-2xl'/> <span className='absolute bg-purple-600 text-white px-0.5 right-[-10px] top-[-80%] text-xl rounded-[30%]'>{count}</span></i></NavLink>
+            <NavLink to={"/register"}><li >Login</li></NavLink>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -57,7 +57,7 @@ function Navbar() {
             <NavLink to={"/classes"}><li onClick={() => setIsOpen(false)}>Classes</li></NavLink>
             <NavLink to={"/contact"}><li onClick={() => setIsOpen(false)}>Contact</li></NavLink>
             <NavLink to={"/Favourite"}><li onClick={() => setIsOpen(false)}><FaHeart /></li></NavLink>
-            <NavLink><li onClick={() => setIsOpen(false)}>Login</li></NavLink>
+            <NavLink to={"/register"}><li onClick={() => setIsOpen(false)}>Login</li></NavLink>
 
           </ul>
         </div>
