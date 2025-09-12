@@ -15,6 +15,7 @@ initialValues:{
 },
 onSubmit:register,
 validate:validateData
+// can use another validationSchema (YUP )
     })
     function validateData(values){
 let errors={}
@@ -57,17 +58,17 @@ errors.password="Password must contain 1 number (0-9) and contain 1 non-alpha nu
 if(values.rePassword == ""){
   errors.rePassword ="RePassword is required"
 }else if(values.rePassword != values.password ){
-  errors.rePassword="Repassword must match with password "
-  console.log(values.rePassword);
-  
+  errors.rePassword="Repassword must match with password " 
 }
 
-console.log(errors);
+
 return errors
     }
 
-    function register(){
-        // console.log(values);
+    function register(values){
+        let users=JSON.parse(localStorage.getItem("users"))||[]
+        users.push(values)
+        localStorage.setItem("users",JSON.stringify(users))
         
     }
   return (
@@ -85,13 +86,13 @@ return errors
       <div className="flex items-start flex-col justify-start">
         <label htmlFor="username" className="text-sm text-gray-700  mr-2">Username:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.username} type="text" id="username" name="username" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-      {touched.username && <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.username}</p>}
+      {touched.username &&errors.username&& <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.username}</p>}
       </div>
 
       <div className="flex items-start flex-col justify-start">
         <label htmlFor="email" className="text-sm text-gray-700  mr-2">Email:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.email} type="email" id="email" name="email" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.email && <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.email}</p>}
+            {touched.email &&errors.email&& <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.email}</p>}
 
       </div>
       <div className="flex items-start flex-col justify-start">
@@ -103,14 +104,14 @@ return errors
       <div className="flex items-start flex-col justify-start">
         <label htmlFor="password" className="text-sm text-gray-700  mr-2">Password:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.password} type="password" id="password" name="password" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.password && <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.password}</p>}
+            {touched.password && errors.password&&<p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.password}</p>}
 
       </div>
 
       <div className="flex items-start flex-col justify-start">
         <label htmlFor="rePassword" className="text-sm text-gray-700  mr-2">Confirm Password:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.rePassword} type="password" id="rePassword" name="rePassword" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.rePassword && <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.rePassword}</p>}
+            {touched.rePassword &&errors.rePassword&& <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.rePassword}</p>}
 
       </div>
 
