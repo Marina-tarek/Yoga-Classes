@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import logo from "../assets/yogaLogo.jpg"
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faTimes,
@@ -12,6 +12,7 @@ import { FaHeart } from 'react-icons/fa'
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    let navigate=useNavigate()
       const wishList = useSelector((state) => state.wishList);
   const count = wishList.length;
   return (
@@ -35,9 +36,12 @@ function Navbar() {
             <NavLink to={"/contact"} className={({ isActive }) =>
                   isActive ? "bg-purple-600 text-white px-2 py-1.5 rounded-lg" : "" }><li >Contact</li></NavLink>
             <NavLink to={"/Favourite"} className="relative"><i><FaHeart className='text-2xl'/> <span className='absolute bg-purple-600 text-white px-0.5 right-[-10px] top-[-80%] text-xl rounded-[30%]'>{count}</span></i></NavLink>
-            <NavLink to={"/register"}><li >Login</li></NavLink>
+            
         </ul>
-
+<ul className="flex space-x-8 text-gray-700 font-medium items-center">
+  {/* <li><NavLink to={"/login"}>LogIn</NavLink></li> */}
+<li onClick={()=>{navigate("/login")}}><NavLink >SignOut</NavLink></li>
+</ul>
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-gray-700"
@@ -57,7 +61,7 @@ function Navbar() {
             <NavLink to={"/classes"}><li onClick={() => setIsOpen(false)}>Classes</li></NavLink>
             <NavLink to={"/contact"}><li onClick={() => setIsOpen(false)}>Contact</li></NavLink>
             <NavLink to={"/Favourite"}><li onClick={() => setIsOpen(false)}><FaHeart /></li></NavLink>
-            <NavLink to={"/register"}><li onClick={() => setIsOpen(false)}>Login</li></NavLink>
+            
 
           </ul>
         </div>

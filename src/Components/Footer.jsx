@@ -1,22 +1,20 @@
-
+import logoImg from "../assets/yogaLogo.jpg"
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 mt-16">
+    <footer className="bg-gray-700 text-gray-300 py-10 mt-16">
 <div className="container mx-auto">
         <div className="max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-3 gap-10">
         
-        {/* Logo + Description */}
         <div>
-          <h2 className="text-2xl font-bold text-purple-400 mb-3">
-            YogaLife
-          </h2>
+          <div className="flex justify-center ">
+            <img src={logoImg} alt="logo image" className="h-[70px] rounded-full"/>
+          </div>
           <p className="text-sm leading-6">
             YogaLife is your space for balance, mindfulness, and growth.  
             Join us to practice yoga, improve flexibility, and live a healthier life.
           </p>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">

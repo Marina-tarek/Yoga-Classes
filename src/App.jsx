@@ -33,8 +33,8 @@ function App() {
         <Route path='/class/:id' element={<ClassDesc/>}></Route>
         <Route path='/classes' element={<Classes/>}></Route>
         <Route path='/favourite' element={<Favourite/>} ></Route>
-        {/* <Route path='/register' element={<Register/>}></Route> */}
-        <Route path='/register' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
         <Route path='/*' element={<NotFound/>}></Route>
       </Routes>
 <Footer/>

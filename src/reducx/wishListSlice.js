@@ -14,7 +14,10 @@ if(!res){
         removeFromWishList: (state, action) => {
       return state.filter(item => item.id !== action.payload);
     },
+    clearAllFromWishList:(state,action)=>{
+       return []  
+    }
     }
 })
-export const {addTowishList,removeFromWishList} =wishListSlice.actions
+export const {addTowishList,removeFromWishList,clearAllFromWishList} =wishListSlice.actions
 export default wishListSlice.reducer    

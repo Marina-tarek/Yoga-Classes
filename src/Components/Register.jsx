@@ -1,8 +1,11 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import logoImg from "../assets/yogaLogo.jpg"
 function Register() {
-  
+ let [message,setMessage]=useState("")
+ const navigate=useNavigate()
     let {handleSubmit,values,handleChange,errors,touched,handleBlur}= useFormik({
 initialValues:{
   "name":"",
@@ -66,66 +69,76 @@ return errors
     }
 
     function register(values){
+     
         let users=JSON.parse(localStorage.getItem("users"))||[]
         users.push(values)
         localStorage.setItem("users",JSON.stringify(users))
-        
+        console.log("succes");
+        setMessage("Register successful")
+        setTimeout(() => {
+          navigate("/login")
+        }, 1000);
+
     }
   return (
-    < >
-  <div className="max-w-lg mx-auto  bg-white rounded-lg shadow-md px-8 py-7 my-12 flex flex-col items-center border border-gray-400 ">
-    <h1 className="text-xl font-bold text-center text-gray-700  mb-7">Welcome to My Yoga Classes</h1>
+    <section style={{ backgroundImage: `url(${logoImg})` }} className="bg-no-repeat bg-center" >
+  <div className="max-w-lg mx-auto bg-[rgba(0,0,0,0.1)]   rounded-lg shadow-md px-8 py-7 my-12 flex flex-col items-center border border-gray-400 bg-no-repeat bg-center "
+  >
+    <h2 className="text-3xl font-bold text-center text-black  mb-7 flex items-center">
+      Welcome to Yoga Life Classes
+ </h2>
     <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
       <div className="flex items-start flex-col justify-start">
-        <label htmlFor="name" className="text-sm text-gray-700  mr-2">Name:</label>
+        <label htmlFor="name" className=" text-black  mr-2">Name:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.name} type="text" id="name" name="name" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-      {touched.name &&errors.name && <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.name}</p>}
+      {touched.name &&errors.name && <p className="text-red-700 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.name}</p>}
       </div>
 
 
       <div className="flex items-start flex-col justify-start">
-        <label htmlFor="username" className="text-sm text-gray-700  mr-2">Username:</label>
+        <label htmlFor="username" className=" text-black  mr-2">Username:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.username} type="text" id="username" name="username" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-      {touched.username &&errors.username&& <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.username}</p>}
+      {touched.username &&errors.username&& <p className="text-red-700 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.username}</p>}
       </div>
 
       <div className="flex items-start flex-col justify-start">
-        <label htmlFor="email" className="text-sm text-gray-700  mr-2">Email:</label>
+        <label htmlFor="email" className=" text-black  mr-2">Email:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.email} type="email" id="email" name="email" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.email &&errors.email&& <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.email}</p>}
+            {touched.email &&errors.email&& <p className="text-red-700 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.email}</p>}
 
       </div>
       <div className="flex items-start flex-col justify-start">
-        <label htmlFor="phone" className="text-sm text-gray-700  mr-2">Phone Number:</label>
+        <label htmlFor="phone" className=" text-black  mr-2">Phone Number:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.phone} type="tel" id="phone" name="phone" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.phone &&errors.phone &&<p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.phone}</p>}
+            {touched.phone &&errors.phone &&<p className="text-red-700 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.phone}</p>}
 
       </div>
       <div className="flex items-start flex-col justify-start">
-        <label htmlFor="password" className="text-sm text-gray-700  mr-2">Password:</label>
+        <label htmlFor="password" className=" text-black  mr-2">Password:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.password} type="password" id="password" name="password" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.password && errors.password&&<p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.password}</p>}
+            {touched.password && errors.password&&<p className="text-red-700 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.password}</p>}
 
       </div>
 
       <div className="flex items-start flex-col justify-start">
-        <label htmlFor="rePassword" className="text-sm text-gray-700  mr-2">Confirm Password:</label>
+        <label htmlFor="rePassword" className=" text-black  mr-2">Confirm Password:</label>
         <input onBlur={handleBlur} onChange={handleChange} value={values.rePassword} type="password" id="rePassword" name="rePassword" className="w-full px-3  py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-            {touched.rePassword &&errors.rePassword&& <p className="text-red-500 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.rePassword}</p>}
+            {touched.rePassword &&errors.rePassword&& <p className="text-red-700 flex items-center"><FaExclamationCircle className="me-1.5"/>{errors.rePassword}</p>}
 
       </div>
 
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm">Register</button>
+      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm " >Register </button>
+     {message && <p className="font-medium text-xl my-2.5 text-green-500 text-center">{message}</p>}
     </form>
 
-    <div className="mt-4 text-center">
-      <span className="text-sm text-gray-500 ">Already have an account? </span>
-      <a href="#" className="text-blue-500 hover:text-blue-600">Login</a>
+    <div className="mt-4 text-center text-xl font-medium">
+      <span className=" text-black ">Already have an account? </span>
+      <NavLink to={"/login"} className="text-blue-800 hover:text-blue-700">Login</NavLink>
     </div>
   
   </div>
 
-    </>
+    </section>
   )
 }
 
